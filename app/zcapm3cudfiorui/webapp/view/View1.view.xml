@@ -1,7 +1,7 @@
 <mvc:View controllerName="zcapm3cudfiorui.controller.View1"
     xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"
     xmlns="sap.m">
-    <Page title="Sales Orders &amp; Items - CRUD (OData V4)">
+    <Page title="Sales Orders &amp; Items - CRUD (OData V4) - Suman Venkatapuram">
       <content>
         <l:VerticalLayout class="sapUiContentPadding" width="100%">
 
