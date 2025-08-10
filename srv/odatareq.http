@@ -1,0 +1,32 @@
+POST http://localhost:4004/odata/v4/sales/SalesOrders
+Content-Type: application/json
+
+{
+     "customerID" : "1001",     
+      "status"     : "NEW",
+      "total"      : "1000.11",
+      "modifiedAt" : "2025/08/07",
+      "items" : [{"productID":"P2","quantity":3,"price":333},
+                {"productID":"P3","quantity":5,"price":4545},
+                {"productID":"P4","quantity":1,"price":2335}]
+}
+
+### single item post
+POST http://localhost:4004/odata/v4/sales/SalesOrders
+Content-Type: application/json
+
+{
+     "customerID" : "1002",     
+      "status"     : "NEW",
+      "total"      : "10.00",
+      "modifiedAt" : "2025/07/07",
+      "items" : [{"productID":"P5","quantity":3,"price":333}
+                ]
+}
+
+
+###
+GET http://localhost:4004/odata/v4/sales/SalesOrders?$expand=items
+
+###
+GET http://localhost:4004/odata/v4/sales/SalesItems

@@ -1,0 +1,86 @@
+<mvc:View controllerName="zcapm3cudfiorui.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"
+    xmlns="sap.m">
+    <Page title="Sales Orders &amp; Items - CRUD (OData V4)">
+      <content>
+        <l:VerticalLayout class="sapUiContentPadding" width="100%">
+
+          <!-- Orders toolbar -->
+          <Toolbar>
+            <Title text="Orders" level="H3"/>
+            <ToolbarSpacer/>
+            <Button text="Create Order" type="Emphasized" press=".onCreateOrder"/>
+            <Button text="Update Order" id="btnUpdateOrder" press=".onUpdateOrder" enabled="false"/>
+            <Button text="Delete Order" id="btnDeleteOrder" type="Negative" press=".onDeleteOrder" enabled="false"/>
+          </Toolbar>
+
+          <!-- Order inputs -->
+          <l:Grid defaultSpan="L3 M6 S12" hSpacing="2" vSpacing="1">
+            <Input id="inpCustomer" placeholder="Customer ID"/>
+            <Input id="inpStatus" placeholder="Status (NEW/OPEN/CLOSED)"/>
+            <Input id="inpTotal" placeholder="Total (optional)" type="Number"/>
+          </l:Grid>
+
+          <!-- Orders table -->
+          <Table id="tblOrders" mode="SingleSelectLeft"
+                 items="{ path: '/SalesOrders' }"
+                 selectionChange=".onOrderSelectionChange">
+            <columns>
+              <Column><Text text="ID"/></Column>
+              <Column><Text text="Customer"/></Column>
+              <Column><Text text="Status"/></Column>
+              <Column><Text text="Total"/></Column>
+              <Column><Text text="Modified At"/></Column>
+            </columns>
+            <items>
+              <ColumnListItem>
+                <cells>
+                  <Text text="{ID}"/>
+                  <ObjectIdentifier title="{customerID}"/>
+                  <Text text="{status}"/>
+                  <ObjectNumber number="{total}"/>
+                  <Text text="{path: 'modifiedAt'}"/>
+                </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+
+          <Toolbar class="sapUiSmallMarginTop">
+            <Title text="Items of Selected Order" level="H3"/>
+            <ToolbarSpacer/>
+            <Button text="Add Item" id="btnCreateItem" press=".onCreateItem" enabled="false"/>
+            <Button text="Update Item" id="btnUpdateItem" press=".onUpdateItem" enabled="false"/>
+            <Button text="Delete Item" id="btnDeleteItem" press=".onDeleteItem" type="Negative" enabled="false"/>
+          </Toolbar>
+
+          <!-- Item inputs -->
+          <l:Grid defaultSpan="L3 M6 S12" hSpacing="2" vSpacing="1">
+            <Input id="inpProduct" placeholder="Product ID"/>
+            <Input id="inpQty" placeholder="Quantity" type="Number"/>
+            <Input id="inpPrice" placeholder="Price" type="Number"/>
+          </l:Grid>
+
+          <!-- Items table -->
+          <Table id="tblItems" mode="SingleSelectLeft" selectionChange=".onItemSelectionChange">
+            <columns>
+              <Column><Text text="Item ID"/></Column>
+              <Column><Text text="Product"/></Column>
+              <Column><Text text="Quantity"/></Column>
+              <Column><Text text="Price"/></Column>
+            </columns>
+            <items>
+              <ColumnListItem>
+                <cells>
+                  <Text text="{ID}"/>
+                  <Text text="{productID}"/>
+                  <ObjectNumber number="{quantity}"/>
+                  <ObjectNumber number="{price}"/>
+                </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+
+        </l:VerticalLayout>
+      </content>
+    </Page>
+</mvc:View>
